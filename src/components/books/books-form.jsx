@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { API_URL } from "../../config.js";
+
+
+
 
 const BookForm = ({ data, bookId }) => {
     const [isEdit, setIsEdit] = useState(false)
@@ -19,11 +21,11 @@ const BookForm = ({ data, bookId }) => {
 
         if (isEdit) { 
             axios
-                .put(`${API_URL}/books/edit/${bookId}`, bookObject)
+                .put(`https://backendmt4-production.up.railway.app/books/edit/${bookId}`, bookObject)
                 .then(response => console.log(response.data))
         } else {
             axios
-                .post(`${API_URL}/books/create`, bookObject)
+                .post(`https://backendmt4-production.up.railway.app/books/create`, bookObject)
                 .then(response => console.log(response.data))
         }
     }

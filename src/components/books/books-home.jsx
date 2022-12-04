@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { API_URL } from "../../config.js"
+
 
 const labels = [
     "#",
@@ -18,9 +18,9 @@ const BooksHome = () => {
 
     useEffect(() => {
         const userId = "63857941aa0cb09677c30304"
-        console.log(`${process.env.API_URL}/books?userId=${userId}`)
+        console.log(`https://backendmt4-production.up.railway.app/books?userId=${userId}`)
         axios  
-            .get(`${API_URL}/books?userId=${userId}`)
+            .get(`https://backendmt4-production.up.railway.app/books?userId=${userId}`)
             .then((response) => {
                 console.log(response.data)
                 setBooks(response.data)
@@ -30,7 +30,7 @@ const BooksHome = () => {
 
     const deleteClick = (bookId) => {
         axios
-            .delete(`${API_URL}/books/delete/${bookId}`)
+            .delete(`https://backendmt4-production.up.railway.app/books/delete/${bookId}`)
             .then(response => {
                 console.log(response.data)
                 setUpdate(!update)
