@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import dateFormat from "dateformat"
+import { API_URL } from "../../config.js"
 
 const BookEdit = () => {
     const { id } = useParams()
@@ -10,7 +11,7 @@ const BookEdit = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:4000/books/" + id)
+            .get(`${API_URL}/books/${id}`)
             .then(response => {
                 console.log(response.data)
                 const readAt = response.data.readAt

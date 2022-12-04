@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  api:
+    restart: unless-stopped
+    build: .
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL = "https://backendmt4-production.up.railway.app"
+    ports:
+      - 3000:3000
+    # volumes:
+    #   - ./api:/usr/src/app

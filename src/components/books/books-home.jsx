@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { API_URL } from "../../config.js"
 
 const labels = [
     "#",
@@ -17,18 +18,19 @@ const BooksHome = () => {
 
     useEffect(() => {
         const userId = "63857941aa0cb09677c30304"
-        axios
-            .get("http://localhost:4000/books?userId=" + userId)
+        console.log(`${process.env.API_URL}/books?userId=${userId}`)
+        axios  
+            .get(`${API_URL}/books?userId=${userId}`)
             .then((response) => {
                 console.log(response.data)
                 setBooks(response.data)
-            })
+            }).catch(err=>{console.log(err)})
 
     }, [update])
 
     const deleteClick = (bookId) => {
         axios
-            .delete("http://localhost:4000/books/delete/" + bookId)
+            .delete(`${API_URL}/books/delete/${bookId}`)
             .then(response => {
                 console.log(response.data)
                 setUpdate(!update)
